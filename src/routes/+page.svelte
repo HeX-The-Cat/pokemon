@@ -35,7 +35,6 @@
             return pokeData
         }
     }
-
 </script>
 
 <div class=" mainWidth">
