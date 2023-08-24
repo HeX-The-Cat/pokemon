@@ -2,13 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+.mainWidth{
+    max-width: 500px;
+}
+
 .sprite {
-    width: 200px;
+    width: 100%;
+}
+
+.hp{
+    background-color: #FF5959;
+}
+.atk{
+    background-color: #F5AC78;
+}
+.def{
+    background-color: #FAE078;
+}
+.spa{
+    background-color: #9DB7F5;
+}
+.spd{
+    background-color: #A7DB8D;
+}
+.spe{
+    background-color: #FA92B2;
 }
 
 .loader {
     width: 100px;
     animation: rotation 2s infinite linear
+}
+
+h2{
+    font-size: 2rem;
 }
 
 @keyframes rotation {
