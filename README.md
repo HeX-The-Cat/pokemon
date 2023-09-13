@@ -6,9 +6,11 @@ Will push to gh-pages at some point.
 
 # Known problem(s)
 
-Some searches cause app to semi-crash (e.g. Weezing), possibly traced error to problem with missing key in JSON fetches.
-In these cases you need to reload the page as each errored search leaves permanent loading icon on the page and new searches appear under this icon.
+Regional forms not working
 
 # How to use
 
+currently
 npm install -> npm run dev
+
+figuring out ghpages for website use
