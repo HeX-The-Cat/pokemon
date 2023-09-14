@@ -1,4 +1,5 @@
-<script lang="ts">
+<script>
+
     import { PBIcon } from "../lib/index.js";
     import Abilities from "./components/Abilities.svelte";
     import ApiFail from "./components/ApiFail.svelte";
@@ -7,18 +8,19 @@
     import Stats from "./components/Stats.svelte";
     import Types from "./components/Types.svelte";
 
-    let pokemonName = "garchomp";
+    let pokemonName = "Pikachu";
     let searchingPokemon = getPokemon();
-    
+
     async function getPokemon() {
         if(pokemonName != ""){
             
 
             var pokeData = []
 
-            pokemonName = NameCheck(pokemonName);
+            let poke = pokemonName;
+            poke = NameCheck(poke);
 
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`)
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.toLowerCase()}`)
             const data = await res.json()
             //console.log(data)
             pokeData.push(data)
