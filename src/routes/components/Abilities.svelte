@@ -2,7 +2,6 @@
     export let pokeData;
 
     let effects = "1"
-    
 </script>
 
 <div>
