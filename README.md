@@ -6,13 +6,17 @@ Will push to gh-pages at some point.
 
 # Known problem(s)
 
-Regional forms not working
-Actual webpage of the project is dead, figuring out a fix, problem for tomorrow's HeX
+Regional forms not working.
+
+Actual webpage of the project is dead, figuring out a fix, problem for tomorrow's HeX.
 
 # How to use
 
 currently
+
 npm install -> npm run dev
 
+
 Doesn't work as intended
+
 https://hex-the-cat.github.io/pokemon/
