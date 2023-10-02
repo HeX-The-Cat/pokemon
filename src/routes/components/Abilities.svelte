@@ -1,13 +1,12 @@
 <script>
     export let pokeData;
 
-    let effects = "1"
 </script>
 
 <div>
     {#each pokeData as ability, index}
         {#if index > 0}
-            {#if ability.effect_entries.hasOwnProperty(effects)}
+            {#if ability.effect_entries.hasOwnProperty("1")}
                 <div tabindex="-1" class="collapse collapse-arrow">
 
                     <div class="collapse-title text-xl font-medium">
