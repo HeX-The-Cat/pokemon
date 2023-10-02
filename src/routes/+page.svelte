@@ -13,7 +13,6 @@
 
     async function getPokemon() {
         if(pokemonName != ""){
-            
 
             var pokeData = []
 
