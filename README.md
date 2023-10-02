@@ -5,7 +5,8 @@ This app isn't aimed to give comprehensive details about the pokemon, only the q
 
 # Known problem(s)
 
-Regional forms not working.
+Regional forms not working.  
+Some abilities are not in english.
 
 # Online version
 
