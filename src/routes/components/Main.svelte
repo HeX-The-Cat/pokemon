@@ -2,7 +2,7 @@
     export let pokeData;
 </script>
 
-<div class=" text-center">
+<div class=" text-center pt-5">
     <h2>{pokeData[0].name.replace(/-/g, ' ').toUpperCase()}</h2>
     <img src={pokeData[0].sprites.other["official-artwork"].front_default} alt="sprite" class="sprite"/>
 </div>

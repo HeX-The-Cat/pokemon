@@ -40,15 +40,18 @@
 
 <div class=" mainWidth">
     <div>
-        <form class="flex justify-around">
-            <input type="search" name="pokeData" bind:value={pokemonName} placeholder="Search for a pokemon" class=" w-[74%] border border-green-500 text-center rounded-md">
+        <form class="flex justify-around pt-5">
+            <input type="search" name="pokeData" bind:value={pokemonName} placeholder="Search for a pokemon" class=" w-[74%] border border-green-500 text-center rounded-md h-10 text-xl">
             <button on:click={() => searchingPokemon = getPokemon()} class=" w-[24%] border border-cyan-500 rounded-md"> Search </button>
         </form>
     </div>
     
     <section>
         {#await searchingPokemon}
-            <img src={PBIcon} class="loader" alt="pokeball loader"/>
+
+            <div class=" flex justify-center pt-52">
+                <img src={PBIcon} class="loader" alt="pokeball loader"/>
+            </div>
     
         {:then pokeData}
     
