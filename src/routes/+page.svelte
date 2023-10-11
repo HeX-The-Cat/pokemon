@@ -7,6 +7,7 @@
     import { NameCheck } from "./components/NameCheck.js";
     import Stats from "./components/Stats.svelte";
     import Types from "./components/Types.svelte";
+  import WeakRes from "./components/WeakRes.svelte";
 
     let pokemonName = "Pikachu";
     let searchingPokemon = getPokemon();
@@ -41,16 +42,16 @@
 <div class=" mainWidth">
     <div>
         <form class="flex justify-around pt-5">
-            <input type="search" name="pokeData" bind:value={pokemonName} placeholder="Search for a pokemon" class=" w-[74%] border border-green-500 text-center rounded-md h-10 text-xl">
-            <button on:click={() => searchingPokemon = getPokemon()} class=" w-[24%] border border-cyan-500 rounded-md"> Search </button>
+            <input type="search" name="pokeData" bind:value={pokemonName} placeholder="Search for a pokemon" class=" w-[80%] border border-green-500 text-center rounded-md h-10 text-xl">
+            <button on:click={() => searchingPokemon = getPokemon()} class=" w-[19%] border border-cyan-500 rounded-md"> Search </button>
         </form>
     </div>
     
-    <section>
+    <section class=" w-full">
         {#await searchingPokemon}
 
             <div class=" flex justify-center pt-52">
-                <img src={PBIcon} class="loader" alt="pokeball loader"/>
+                <img src={PBIcon} class="loader" alt=""/>
             </div>
     
         {:then pokeData}
@@ -62,6 +63,8 @@
             <Abilities pokeData={pokeData} />
     
             <Stats pokeData={pokeData} />
+
+            <WeakRes pokeData={pokeData} />
     
         {:catch error}
             
