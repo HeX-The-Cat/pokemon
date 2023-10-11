@@ -6,7 +6,8 @@ This app isn't aimed to give comprehensive details about the pokemon, only the q
 # Known problem(s)
 
 Regional forms not working.  
-Some abilities are not in english.
+Some abilities are not in english.  
+Search Bar does a little yoga while searching.
 
 # Online version
 
