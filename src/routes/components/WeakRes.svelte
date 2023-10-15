@@ -292,7 +292,7 @@
     }
   }
 
-    console.log(resWeak)
+    //console.log(resWeak)
 </script>
 
 <div class=" pt-2">
