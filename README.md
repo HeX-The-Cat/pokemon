@@ -1,7 +1,7 @@
 # Quicksearch Pokemon Project
 
-Project for quick basic info search for pokemons, aimed to be used on phones.  
-This app isn't aimed to give comprehensive details about the pokemon, only the quick refresher type info while playing.
+Project for quick info search about pokemons, aimed to be used on phones.  
+Meant to give basic information of the pokemon searched without having to go wiki diving.
 
 # Known problem(s)
 
