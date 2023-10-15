@@ -13,14 +13,15 @@
     let searchingPokemon = getPokemon();
 
     async function getPokemon() {
+
+        var pokeData = []
+
+        let poke = pokemonName;
+        poke = NameCheck(poke);
+
         if(pokemonName != ""){
 
-            var pokeData = []
-
-            let poke = pokemonName;
-            poke = NameCheck(poke);
-
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.toLowerCase()}`)
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
             const data = await res.json()
             //console.log(data)
             pokeData.push(data)
@@ -35,6 +36,9 @@
 
             //console.log(pokeData)
             return pokeData
+        }
+        else{
+            throw new Error("Invalid or empty Pokemon name.");
         }
     }
 </script>

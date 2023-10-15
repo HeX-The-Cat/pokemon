@@ -1,8 +1,9 @@
 
-export function NameCheck(pokemonName) {
+export function NameCheck(poke) {
     
-    pokemonName = pokemonName.replace(/\s+/g, '-').toLowerCase();
+    poke = poke.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+    poke = poke.replace(/\s+/g, '-').toLowerCase();
 
-    return pokemonName;
+    return poke;
 
 }
