@@ -8,7 +8,8 @@ This app isn't aimed to give comprehensive details about the pokemon, only the q
 Regional forms not working.  
 Some abilities are not in english.  
 Search Bar does a little yoga while searching.  
-Spinner not being Spinner on first load
+Spinner occasionally not being Spinner on first load  
+Ghost spinners on empty search
 
 # Online version
 
