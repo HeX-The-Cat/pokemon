@@ -297,7 +297,7 @@
 
 <div class=" pt-2">
     <div>
-        <h3>Weak to:</h3>
+        <h3 class=" pl-4">Weak to:</h3>
         <div class="flex flex-wrap justify-center text-center">
             {#each weakTo as { type, value }}
                 <p style="{getBackgroundColor(type)}" class=" p-1 m-1 resWeakText w-28 rounded-md">{value}</p>
@@ -306,29 +306,33 @@
     </div>
 
     <div>
-        <h3>Resistant to:</h3>
+        <h3 class=" pl-4">Resistant to:</h3>
         <div class="flex flex-wrap justify-center text-center">
-            {#each resistantTo as { type, value }}
-                <p style="{getBackgroundColor(type)}" class=" p-1 m-1 resWeakText w-28 rounded-md">{value}</p>
-            {/each}
+            {#if resistantTo.length > 0}
+                {#each resistantTo as { type, value }}
+                    <p style="{getBackgroundColor(type)}" class=" p-1 m-1 resWeakText w-28 rounded-md">{value}</p>
+                {/each}
+            {:else}
+                <p class=" p-1 m-1 resWeakText w-28 rounded-md bg-stone-400">None</p>
+            {/if}
         </div>
     </div>
 
     <div>
-        <h3>Immune to:</h3>
+        <h3 class=" pl-4">Immune to:</h3>
         <div class="flex justify-center text-center">
             {#if immuneTo.length > 0}
                 {#each immuneTo as { type, value }}
                     <p style="{getBackgroundColor(type)}" class=" p-1 m-1 resWeakText w-28 rounded-md">{value}</p>
                 {/each}
             {:else}
-                <p class=" p-1 m-1 resWeakText w-20 rounded-md bg-stone-400">None</p>
+                <p class=" p-1 m-1 resWeakText w-28 rounded-md bg-stone-400">None</p>
             {/if}
         </div>
     </div>
 
     <div>
-        <h3>Damaged normally by:</h3>
+        <h3 class=" pl-4">Damaged normally by:</h3>
         <div class="flex flex-wrap justify-center text-center">
             {#each normalDamage as { type, value }}
                 <p style="{getBackgroundColor(type)}" class=" p-1 m-1 resWeakText w-28 rounded-md">{value}</p>
