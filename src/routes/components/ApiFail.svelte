@@ -1,9 +1,37 @@
 <script>
+    export let error;
 </script>
 
-<p>Api request failed.</p>
-<p>This is most likely due to typo or incorrect way to request data for pokemon</p>
-<p>If you wanted to look for different forms of pokemon, try following:</p>
-<p>Mega Evolutions: try e.g. "Metagross Mega" or "Charizard Mega X".</p>
-<p>Pokemons with forms: try e.g. "Shaymin Land" or "Aegislash Shield".</p>
-<p>Still figuring out regional variants, please stand by for update.</p>
+
+<div class=" text-center">
+    <br>
+    <h3 class=" text-center">{error.message}</h3>
+    <br>
+    <h3 class=" text-center">If you have trouble finding specific forms of the pokemons, try the following:</h3>
+    <br>
+    <h3 class=" text-center">Mega evolutions:</h3>
+    <p>Try e.g. "Metagross Mega" or "Charizard Mega X".</p>
+    <br>
+    <h3 class=" text-center">Special forms:</h3>
+    <p>Try e.g. "Shaymin Land", "Aegislash Shield" or "Giratina Altered".</p>
+    <br>
+    <h3 class=" text-center">Regional forms:</h3>
+    <p>Add the name of the region with space after the name:</p>
+    <dl>
+        <dt class=" text-xl">Alola:</dt>
+        <dl>For Alolan forms, e.g. "Raichu Alola"</dl>
+        <dt class=" text-xl">Galar:</dt>
+        <dl>For Galarian forms, e.g. "Rapidash Galar"</dl>
+        <dt class=" text-xl">Hisui:</dt>
+        <dl>For Hisuian forms, e.g. "Braviary Hisui"</dl>
+        <dt class=" text-xl">Paldea:</dt>
+        <dl>For Paldean forms, e.g. "Wooper Paldea"</dl>
+    </dl>
+    <br>
+    <h3>Complex searches:</h3>
+    <p>Examples of know complex pokemon names searches:</p>
+    <ul>
+        <li>"Tauros Paldea Combat Breed"</li>
+        <li>"Darmanitan Galar Standard"</li>
+    </ul>
+</div>

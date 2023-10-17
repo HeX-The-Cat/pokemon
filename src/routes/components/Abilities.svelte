@@ -27,7 +27,7 @@
                         </div>
                     {/if}
                 </div>
-            {:else}
+            {:else if ability.flavor_text_entries.hasOwnProperty("7")}
                 <div tabindex="-1" class="collapse collapse-arrow">
                     <input type="checkbox" />
 
@@ -40,6 +40,21 @@
 
                     <div class="collapse-content"> 
                         <p>{ability.flavor_text_entries[7].flavor_text}</p>
+                    </div>
+                </div>
+            {:else}
+                <div tabindex="-1" class="collapse collapse-arrow">
+                    <input type="checkbox" />
+
+                    <div class="collapse-title text-xl font-medium">
+                        <p>{ability.name.replace(/-/g, ' ').toUpperCase()}</p>
+                        {#if pokeData[0].abilities[index - 1].is_hidden == true}
+                            <div class="badge badge-outline">Hidden Ability</div>
+                        {/if}
+                    </div>
+
+                    <div class="collapse-content"> 
+                        <p>Problem fetching data</p>
                     </div>
                 </div>
             {/if}

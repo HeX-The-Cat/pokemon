@@ -9,7 +9,7 @@
     import Types from "./components/Types.svelte";
   import WeakRes from "./components/WeakRes.svelte";
 
-    let pokemonName = "Pikachu";
+    let pokemonName = "";
     let searchingPokemon = getPokemon();
 
     async function getPokemon() {
@@ -21,24 +21,29 @@
 
         if(pokemonName != ""){
 
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
-            const data = await res.json()
-            //console.log(data)
-            pokeData.push(data)
+            try {
+                const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
+                const data = await res.json()
+                //console.log(data)
+                pokeData.push(data)
 
-            for (let i = 0; i < (data.abilities).length; i++) {
-                const resAbi = await fetch(data.abilities[i].ability.url)
-                const dataAbit = await resAbi.json()
+                for (let i = 0; i < (data.abilities).length; i++) {
+                    const resAbi = await fetch(data.abilities[i].ability.url)
+                    const dataAbit = await resAbi.json()
 
-                //console.log(dataAbit)
-                pokeData.push(dataAbit)
+                    //console.log(dataAbit)
+                    pokeData.push(dataAbit)
+                }
+
+                //console.log(pokeData)
+                return pokeData
+            } catch (error) {
+                throw new Error(`No data available with given name. Please check the name for typos and excessive spaces.`)
             }
-
-            //console.log(pokeData)
-            return pokeData
+            
         }
         else{
-            throw new Error("Invalid or empty Pokemon name.");
+            throw new Error("Search above for pokemons by their name.");
         }
     }
 </script>
@@ -72,7 +77,7 @@
     
         {:catch error}
             
-            <ApiFail />
+            <ApiFail error={error} />
     
         {/await}
     </section>
