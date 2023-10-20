@@ -7,7 +7,7 @@
     import { NameCheck } from "./components/NameCheck.js";
     import Stats from "./components/Stats.svelte";
     import Types from "./components/Types.svelte";
-  import WeakRes from "./components/WeakRes.svelte";
+    import WeakRes from "./components/WeakRes.svelte";
 
     let pokemonName = "";
     let searchingPokemon = getPokemon();

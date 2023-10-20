@@ -3,7 +3,7 @@
 </script>
 
 
-<div class=" text-center">
+<div class=" text-center px-3">
     <br>
     <h3 class=" text-center">{error.message}</h3>
     <br>
@@ -29,9 +29,12 @@
     </dl>
     <br>
     <h3>Complex searches:</h3>
-    <p>Examples of know complex pokemon names searches:</p>
+    <p>Examples of know complex pokemon searches:</p>
     <ul>
         <li>"Tauros Paldea Combat Breed"</li>
         <li>"Darmanitan Galar Standard"</li>
     </ul>
+    <br>
+    <h3>Some data may be missing from pokemons of newer generations.</h3>
+    <p>This is an issue with PokeAPI not having the data and there isn't anything this site can do about it as its only purpose is to display data fetched from the API.</p>
 </div>

@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="collapse-content"> 
-                        <p>Problem fetching data</p>
+                        <p>No effect entry found for the ability.</p>
                     </div>
                 </div>
             {/if}
