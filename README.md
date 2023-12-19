@@ -13,10 +13,6 @@ Some newest pokemons have no Ability description, this is problem with API not h
 
 https://hex-the-cat.github.io/pokemon/
 
-# Local version
-
-```npm install``` -> ```npm run dev```
-
 # Made using PokéAPI
 
 https://pokeapi.co/
