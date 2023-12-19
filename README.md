@@ -6,7 +6,6 @@ Meant to give basic information of the pokemon searched without having to go wik
 # Known problem(s)
 
 Search Bar does a little yoga while searching.  
-Spinner not loading on first page load  
 Some newest pokemons have no Ability description, this is problem with API not having the info  
 
 # Online version
