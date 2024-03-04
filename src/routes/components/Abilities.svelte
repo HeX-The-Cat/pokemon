@@ -4,6 +4,8 @@
 </script>
 
 <div>
+    <h3 class=" pl-4">Abilities:</h3>
+    
     {#each pokeData as ability, index}
         {#if index > 0}
             {#if ability.effect_entries.hasOwnProperty("1")}

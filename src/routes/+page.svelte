@@ -48,9 +48,9 @@
     }
 </script>
 
-<div class=" mainWidth">
-    <div>
-        <form class="flex justify-around pt-5">
+<div class=" max-w-[500px] lg:max-w-[1000px]">
+    <div class=" flex justify-center">
+        <form class="flex justify-around pt-5 w-full max-w-[490px]">
             <input type="search" name="pokeData" bind:value={pokemonName} placeholder="Search for a pokemon" class=" w-[80%] border border-green-500 text-center rounded-md h-10 text-xl">
             <button on:click={() => searchingPokemon = getPokemon()} class=" w-[19%] border border-cyan-500 rounded-md"> Search </button>
         </form>
@@ -65,15 +65,22 @@
     
         {:then pokeData}
     
-            <Main pokeData={pokeData} />
+        <div class=" lg:flex">
+            <div class=" lg:w-1/2">
+                <Main pokeData={pokeData} />
     
-            <Types pokeData={pokeData} />
-    
-            <Abilities pokeData={pokeData} />
-    
-            <Stats pokeData={pokeData} />
+                <Types pokeData={pokeData} />
+        
+                
+            </div>
+            <div class=" lg:w-1/2 lg:pt-4">
+                <Abilities pokeData={pokeData} />
 
-            <WeakRes pokeData={pokeData} />
+                <Stats pokeData={pokeData} />
+
+                <WeakRes pokeData={pokeData} />
+            </div>
+        </div>
     
         {:catch error}
             

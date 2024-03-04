@@ -7,7 +7,9 @@
 
 <div class="w-[100%]">
 
-    <div class="flex text-center font-semibold">
+    <h3 class=" pl-4">Base Stats:</h3>
+
+    <div class="flex text-center font-semibold px-4">
         <div class=" p-1 hp text-gray-950 flex-auto ">
             <p>HP</p>
             <p>{pokeData[0].stats[0].base_stat}</p>
