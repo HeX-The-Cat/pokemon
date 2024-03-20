@@ -70,8 +70,6 @@
                 <Main pokeData={pokeData} />
     
                 <Types pokeData={pokeData} />
-        
-                
             </div>
             <div class=" lg:w-1/2 lg:pt-4">
                 <Abilities pokeData={pokeData} />
@@ -83,9 +81,7 @@
         </div>
     
         {:catch error}
-            
             <ApiFail error={error} />
-    
         {/await}
     </section>
 </div>
