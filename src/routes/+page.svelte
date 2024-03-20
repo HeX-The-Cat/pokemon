@@ -2,6 +2,7 @@
 
     import { PBIcon } from "../lib/index.js";
     import Abilities from "./components/Abilities.svelte";
+	import AltersOptions from "./components/AltersOptions.svelte";
     import ApiFail from "./components/ApiFail.svelte";
     import Main from "./components/Main.svelte";
     import { NameCheck } from "./components/NameCheck.js";
@@ -46,6 +47,7 @@
             throw new Error("Search above for pokemons by their name.");
         }
     }
+    
 </script>
 
 <div class=" max-w-[500px] lg:max-w-[1000px]">
@@ -56,6 +58,7 @@
         </form>
     </div>
     
+    
     <section class=" w-full">
         {#await searchingPokemon}
 
@@ -64,6 +67,9 @@
             </div>
     
         {:then pokeData}
+        <div>
+            <AltersOptions pokeData={pokeData} />
+        </div>
     
         <div class=" lg:flex">
             <div class=" lg:w-1/2">
