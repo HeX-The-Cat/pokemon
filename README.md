@@ -7,7 +7,8 @@ Meant to give basic information of the pokemon searched without having to go wik
 
 Search Bar does a little yoga while searching.  
 Some newest pokemons have no Ability description, this is problem with API not having the info  
-As I am a potat, I've used main as just as sort of "save online" point instead of dev branch, lesson learned and will fix this Soon™  
+As I am a potat, I've used main as just as sort of "save online" point instead of dev branch, lesson learned and will fix this Soon™ 
+Plans are a complete rewrite with stuff I've learned (like cleaning up that pesky var)  
 
 # Online version
 
