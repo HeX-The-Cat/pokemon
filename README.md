@@ -10,7 +10,7 @@ Some newest pokemons have no Ability description, this is problem with API not h
 
 # Rewrite plans
 
-As I am a potat, I've used main as just as sort of "save online" point instead of dev branch 
+As I am a potat, I've used main as just as sort of "save online" point instead of dev branch  
 Plans are to completely rewrite with skills I've learned (like cleaning up that pesky var), possibly with typescript  
 
 # Online version
