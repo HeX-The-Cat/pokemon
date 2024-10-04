@@ -23,6 +23,7 @@ export const forms = {
   eternatus: ["eternatus", "eternatus-eternamax"],
   exeggutor: ["exeggutor", "exeggutor-alola"],
   farfetchd: ["farfetchd", "farfetchd-galar"],
+  flabébé: ["flabebe"],
   floette: ["floette", "floette-eternal"],
   geodude: ["geodude", "geodude-alola"],
   gimmighoul: ["gimmighoul", "gimmighoul-roaming"],
