@@ -1,9 +1,8 @@
-
-export function NameCheck(poke) {
-    
-    poke = poke.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
-    poke = poke.replace(/\s+/g, '-').toLowerCase();
-
-    return poke;
-
+export default function NameCheck(poke) {
+  poke = poke
+    .trim()
+    .replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, "")
+    .replace(/\s+/g, "-")
+    .toLowerCase();
+  return poke;
 }

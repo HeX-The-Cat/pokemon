@@ -1,14 +1,18 @@
 <script>
-    export let pokeData
-
+  export let pokeData;
+  export let selectedForm;
 </script>
 
-
-{#if pokeData[0].name == "oricorio-baile" || pokeData[0].name == "oricorio-sensu" || pokeData[0].name == "oricorio-pom-pom" || pokeData[0].name == "oricorio-pau"}
-    <div class=" flex justify-evenly py-6">
-        <button class=" btn-accent px-2">Baile Style</button>
-        <button class=" btn-accent px-2">Sensu Style</button>
-        <button class=" btn-accent px-2">Pom-Pom Style</button>
-        <button class=" btn-accent px-2">Pa'u Style</button>
-    </div>
+{#if pokeData.length > 1}
+  <div class=" flex justify-evenly py-6">
+    {#each pokeData as form, index}
+      <button
+        on:click={() => {
+          selectedForm = index;
+        }}
+      >
+        {form.basic.name}
+      </button>
+    {/each}
+  </div>
 {/if}

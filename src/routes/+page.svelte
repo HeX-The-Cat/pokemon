@@ -1,93 +1,197 @@
 <script>
+  import { onMount, onDestroy } from "svelte";
+  import { browser } from "$app/environment";
+  import { PBIcon } from "../lib/index.js";
+  import Abilities from "./components/Abilities.svelte";
+  import AltersOptions from "./components/AltersOptions.svelte";
+  import ApiFail from "./components/ApiFail.svelte";
+  import Main from "./components/Main.svelte";
+  import Stats from "./components/Stats.svelte";
+  import Types from "./components/Types.svelte";
+  import WeakRes from "./components/WeakRes.svelte";
+  import { PokeNames } from "./components/NameList.js";
+  import { getPokemon } from "./components/PokeApi.js";
 
-    import { PBIcon } from "../lib/index.js";
-    import Abilities from "./components/Abilities.svelte";
-	import AltersOptions from "./components/AltersOptions.svelte";
-    import ApiFail from "./components/ApiFail.svelte";
-    import Main from "./components/Main.svelte";
-    import { NameCheck } from "./components/NameCheck.js";
-    import Stats from "./components/Stats.svelte";
-    import Types from "./components/Types.svelte";
-    import WeakRes from "./components/WeakRes.svelte";
+  let loadingState = "menu";
+  let pokeData = [];
+  let pokemonName = "";
+  let filteredSuggestions = [];
+  let message = "Search above for pokemons by their name.";
+  let activeSuggestionIndex = -1; // To manage the active suggestion for keyboard navigation
+  let showSuggestions = false;
+  let searchArea;
+  let selectedForm = 0;
 
-    let pokemonName = "";
-    let searchingPokemon = getPokemon();
-
-    async function getPokemon() {
-
-        var pokeData = []
-
-        let poke = pokemonName;
-        poke = NameCheck(poke);
-
-        if(pokemonName != ""){
-
-            try {
-                const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
-                const data = await res.json()
-                //console.log(data)
-                pokeData.push(data)
-
-                for (let i = 0; i < (data.abilities).length; i++) {
-                    const resAbi = await fetch(data.abilities[i].ability.url)
-                    const dataAbit = await resAbi.json()
-
-                    //console.log(dataAbit)
-                    pokeData.push(dataAbit)
-                }
-
-                //console.log(pokeData)
-                return pokeData
-            } catch (error) {
-                throw new Error(`No data available with given name. Please check the name for typos and excessive spaces.`)
-            }
-            
-        }
-        else{
-            throw new Error("Search above for pokemons by their name.");
-        }
+  // filtering function for suggestions
+  function filterSuggestions() {
+    if (pokemonName.trim() === "") {
+      filteredSuggestions = [];
+      showSuggestions = false;
+      return;
     }
-    
+
+    // Prioritize names starting with the input (case-insensitive)
+    const startingMatches = PokeNames.filter((name) => name.toLowerCase().startsWith(pokemonName.toLowerCase()));
+
+    // Then get names containing the input, but not starting with it
+    const otherMatches = PokeNames.filter(
+      (name) => name.toLowerCase().includes(pokemonName.toLowerCase()) && !name.toLowerCase().startsWith(pokemonName.toLowerCase())
+    );
+
+    // Combine both arrays and limit to 5 suggestions
+    filteredSuggestions = [...startingMatches, ...otherMatches].slice(0, 5);
+
+    activeSuggestionIndex = -1; // Reset the active suggestion
+    showSuggestions = filteredSuggestions.length > 0;
+  }
+
+  // Handle up/down arrow key navigation
+  function handleKeyDown(event) {
+    if (showSuggestions) {
+      if (event.key === "ArrowDown") {
+        // Navigate down the suggestion list
+        activeSuggestionIndex = (activeSuggestionIndex + 1) % filteredSuggestions.length;
+      } else if (event.key === "ArrowUp") {
+        // Navigate up the suggestion list
+        activeSuggestionIndex = (activeSuggestionIndex - 1 + filteredSuggestions.length) % filteredSuggestions.length;
+      } else if (event.key === "Enter") {
+        // Select the active suggestion on Enter key press
+        if (activeSuggestionIndex >= 0 && filteredSuggestions[activeSuggestionIndex]) {
+          selectSuggestion(filteredSuggestions[activeSuggestionIndex]);
+          event.preventDefault();
+        }
+      }
+    }
+  }
+
+  // Handle suggestion selection
+  function selectSuggestion(suggestion) {
+    //console.log(suggestion);
+    showSuggestions = false;
+    pokemonName = suggestion;
+    filteredSuggestions = [];
+    fetchPokemon();
+  }
+
+  // Show suggestions on input focus
+  function handleFocus() {
+    showSuggestions = filteredSuggestions.length > 0;
+  }
+
+  // Hide suggestions on input blur, but not when navigating with keys
+  function handleBlur() {
+    setTimeout(() => {
+      showSuggestions = false; // Hide the suggestion box when clicking outside
+    }, 100); // Timeout to allow click events to register
+  }
+
+  // Only run this code in the browser environment
+  function handleClickOutside(event) {
+    if (browser && searchArea) {
+      // Ensure searchArea is defined
+      if (!searchArea.contains(event.target)) {
+        showSuggestions = false;
+      }
+    }
+  }
+
+  // Add event listener for clicks outside (only in browser)
+  if (browser) {
+    onMount(() => {
+      document.addEventListener("mousedown", handleClickOutside);
+    });
+
+    onDestroy(() => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    });
+  }
+
+  // Fetch data from the API
+  async function fetchPokemon() {
+    showSuggestions = false;
+    selectedForm = 0;
+    if (pokemonName != "") {
+      loadingState = "loading";
+      try {
+        pokeData = await getPokemon(pokemonName);
+        loadingState = "show";
+      } catch (error) {
+        message = error.message;
+        loadingState = "menu";
+      }
+    } else {
+      message = "Search above for Pokémon by their name.";
+      loadingState = "menu";
+    }
+  }
 </script>
 
 <div class=" max-w-[500px] lg:max-w-[1000px]">
-    <div class=" flex justify-center">
-        <form class="flex justify-around pt-5 w-full max-w-[490px]">
-            <input type="search" name="pokeData" bind:value={pokemonName} placeholder="Search for a pokemon" class=" w-[80%] border border-green-500 text-center rounded-md h-10 text-xl">
-            <button on:click={() => searchingPokemon = getPokemon()} class=" w-[19%] border border-cyan-500 rounded-md"> Search </button>
-        </form>
+  <div class=" flex w-full justify-center">
+    <div class=" w-full max-w-[490px] relative" bind:this={searchArea}>
+      <form class="flex justify-around pt-5 w-full max-w-[490px]" on:submit|preventDefault>
+        <input
+          type="search"
+          name="pokeData"
+          bind:value={pokemonName}
+          on:input={filterSuggestions}
+          on:focus={handleFocus}
+          on:blur={handleBlur}
+          on:keydown={handleKeyDown}
+          placeholder="Search for a pokemon"
+          autocomplete="off"
+          class=" w-[80%] border border-green-500 text-center rounded-md h-10 text-xl"
+        />
+        <button on:click={() => fetchPokemon()} class=" w-[19%] border border-cyan-500 rounded-md"> Search </button>
+      </form>
+      {#if showSuggestions}
+        <ul class=" border border-gray-300 rounded-md mt-1 w-full max-w-[490px] absolute bg-[#1d232a] z-10">
+          {#each filteredSuggestions as suggestion, index}
+            <li
+              class=" focus:text-black hover:bg-gray-200 hover:text-black px-3 py-[4px] cursor-pointer {index === activeSuggestionIndex
+                ? 'bg-gray-400 text-black'
+                : ''}"
+              on:click={() => selectSuggestion(suggestion)}
+              on:keydown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  selectSuggestion(suggestion);
+                }
+              }}
+            >
+              {suggestion}
+            </li>
+          {/each}
+        </ul>
+      {/if}
     </div>
-    
-    
-    <section class=" w-full">
-        {#await searchingPokemon}
+  </div>
 
-            <div class=" flex justify-center pt-52">
-                <img src={PBIcon} class="loader" alt=""/>
-            </div>
-    
-        {:then pokeData}
-        <div>
-            <AltersOptions pokeData={pokeData} />
+  <section class=" w-full">
+    {#if loadingState === "loading"}
+      <div class=" flex justify-center pt-52">
+        <img src={PBIcon} class="loader" alt="" />
+      </div>
+    {:else if loadingState === "show"}
+      <div>
+        <AltersOptions {pokeData} bind:selectedForm />
+      </div>
+
+      <div class=" lg:flex">
+        <div class=" lg:w-1/2">
+          <Main {pokeData} {selectedForm} />
+
+          <Types {pokeData} {selectedForm} />
         </div>
-    
-        <div class=" lg:flex">
-            <div class=" lg:w-1/2">
-                <Main pokeData={pokeData} />
-    
-                <Types pokeData={pokeData} />
-            </div>
-            <div class=" lg:w-1/2 lg:pt-4">
-                <Abilities pokeData={pokeData} />
+        <div class=" lg:w-1/2 lg:pt-4">
+          <Abilities {pokeData} {selectedForm} />
 
-                <Stats pokeData={pokeData} />
+          <Stats {pokeData} {selectedForm} />
 
-                <WeakRes pokeData={pokeData} />
-            </div>
+          <WeakRes {pokeData} {selectedForm} />
         </div>
-    
-        {:catch error}
-            <ApiFail error={error} />
-        {/await}
-    </section>
+      </div>
+    {:else}
+      <ApiFail {message} />
+    {/if}
+  </section>
 </div>
