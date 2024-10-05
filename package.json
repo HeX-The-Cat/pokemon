@@ -1,24 +1,24 @@
 {
-	"name": "pokemon",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"ghp": "npx gh-pages -d build -t true"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.20.4",
-		"autoprefixer": "^10.4.15",
-		"daisyui": "^3.6.1",
-		"gh-pages": "^6.0.0",
-		"postcss": "^8.4.28",
-		"svelte": "^4.0.5",
-		"tailwindcss": "^3.3.3",
-		"vite": "^4.4.2"
-	},
-	"type": "module"
+  "name": "pokemon",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "ghp": "npx gh-pages -d build -t true"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^2.0.0",
+    "@sveltejs/adapter-static": "^2.0.3",
+    "@sveltejs/kit": "^1.20.4",
+    "autoprefixer": "^10.4.15",
+    "daisyui": "^3.6.1",
+    "gh-pages": "^6.0.0",
+    "postcss": "^8.4.28",
+    "svelte": "^4.0.5",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.2"
+  },
+  "type": "module"
 }

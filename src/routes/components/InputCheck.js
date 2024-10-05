@@ -1,4 +1,4 @@
-export default function NameCheck(poke) {
+export default function inputCheck(poke) {
   poke = poke
     .trim()
     .replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, "")

@@ -1,16 +1,16 @@
-import NameCheck from "./NameCheck";
-import { forms } from "./AltersList";
+import inputCheck from "./InputCheck";
+import { fixer } from "./SearchFixer";
 
-const specialForms = forms;
+const SearchFixer = fixer;
 
 export async function getPokemon(pokemonName) {
   let pokeData = [];
 
-  const poke = NameCheck(pokemonName); // Parse name for API
+  const poke = inputCheck(pokemonName); // Parse name for API
 
-  if (specialForms[poke]) {
+  if (SearchFixer[poke]) {
     // Multiple forms fetch
-    const formPromises = specialForms[poke].map(async (form) => {
+    const formPromises = SearchFixer[poke].map(async (form) => {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${form}`);
       const data = await res.json();
 
@@ -58,6 +58,6 @@ export async function getPokemon(pokemonName) {
     }
   }
 
-  //console.log(pokeData);
+  console.log(pokeData);
   return pokeData;
 }
