@@ -25,7 +25,7 @@
 </script>
 
 <div class=" w-[100%]">
-  <div class="flex justify-around">
+  <div class="flex justify-around px-4">
     {#each pokeData[selectedForm].basic.types as type}
       <div class=" flex object-center">
         {#if type.type.name == "bug"}

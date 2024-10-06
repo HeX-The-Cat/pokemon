@@ -1,6 +1,7 @@
 <script>
   export let pokeData;
   export let selectedForm;
+  let uniqueAbilities = [];
 
   const getAbilityDescription = (ability) => {
     const shortEntry = ability.effect_entries.find((entry) => entry.language.name === "en");
@@ -30,10 +31,10 @@
     return uniqueAbilities;
   }
 
-  const uniqueAbilities = filterUniqueAbilities(pokeData[selectedForm].abilities);
+  $: uniqueAbilities = filterUniqueAbilities(pokeData[selectedForm].abilities);
 </script>
 
-<div>
+<div class=" mt-2 lg:mt-0">
   <h3 class=" pl-4">Abilities:</h3>
 
   {#each uniqueAbilities as ability, index}

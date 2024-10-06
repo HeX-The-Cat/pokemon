@@ -312,7 +312,7 @@
     <h3 class=" pl-4">Weak to:</h3>
     <div class="flex flex-wrap justify-center text-center">
       {#each weakToData as { type, value }}
-        <p style={getBackgroundColor(type)} class=" p-1 m-1 resWeakText w-28 rounded-md">{value}</p>
+        <p style={getBackgroundColor(type)} class=" p-1 m-1 resWeakText w-28 rounded-md {value.includes('4x') ? ' font-bold' : ''}">{value}</p>
       {/each}
     </div>
   </div>

@@ -127,7 +127,7 @@
 </script>
 
 <div class=" max-w-[500px] lg:max-w-[1000px]">
-  <div class=" flex w-full justify-center">
+  <div class=" flex w-full justify-center px-4">
     <div class=" w-full max-w-[490px] relative" bind:this={searchArea}>
       <form class="flex justify-around pt-5 w-full max-w-[490px]" on:submit|preventDefault>
         <input

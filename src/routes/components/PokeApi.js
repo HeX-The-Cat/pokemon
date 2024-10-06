@@ -58,6 +58,6 @@ export async function getPokemon(pokemonName) {
     }
   }
 
-  console.log(pokeData);
+  //console.log(pokeData);
   return pokeData;
 }
