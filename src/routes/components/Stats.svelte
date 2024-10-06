@@ -70,7 +70,7 @@
     </div>
     <div class=" w-full px-4 text-gray-950 text-center font-semibold">
       <div class="max-w-[500px] {bgColor}">
-        <p>Total</p>
+        <p>Base Stat Total</p>
         <p>
           {pokeData[selectedForm].basic.stats[0].base_stat +
             pokeData[selectedForm].basic.stats[1].base_stat +

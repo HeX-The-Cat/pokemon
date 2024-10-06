@@ -2,59 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-.mainWidth{
-    max-width: 500px;
+.mainWidth {
+  max-width: 500px;
 }
 
 .sprite {
-    width: 100%;
+  width: 100%;
 }
 
-.hp{
-    background-color: #FF5959;
+.hp {
+  background-color: #ff5959;
 }
-.atk{
-    background-color: #F5AC78;
+.atk {
+  background-color: #f5ac78;
 }
-.def{
-    background-color: #FAE078;
+.def {
+  background-color: #fae078;
 }
-.spa{
-    background-color: #9DB7F5;
+.spa {
+  background-color: #9db7f5;
 }
-.spd{
-    background-color: #A7DB8D;
+.spd {
+  background-color: #a7db8d;
 }
-.spe{
-    background-color: #FA92B2;
+.spe {
+  background-color: #fa92b2;
 }
 
 .loader {
-    width: 100px;
-    animation: rotation 2s infinite linear
+  width: 100px;
+  animation: rotation 2s infinite linear;
 }
 
 .resWeakText {
-    color: white;
-    text-shadow:
-     -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-       1px 1px 0 #000;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-h2{
-    font-size: 2rem;
+h2 {
+  font-size: 2rem;
 }
-h3{
-    font-size: 1.5rem;
+h3 {
+  font-size: 1.5rem;
 }
 
 @keyframes rotation {
-    from{
-        transform: rotate(0deg)
-    }
-    to{
-        transform: rotate(359deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.formsButton {
+  @apply border rounded-lg py-1 px-3 w-auto min-w-[200px] transition-all duration-150 flex justify-center items-center;
+}
+.formsButtonSelected {
+  @apply border-green-500 border-b-2 pb-[6px] mt-[2px];
+}
+.formsButtonDeselected {
+  @apply border-white border-b-4 mb-[2px];
 }
