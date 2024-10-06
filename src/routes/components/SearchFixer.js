@@ -146,7 +146,7 @@ export const fixer = {
   steelix: ["steelix", "steelix-mega"],
   sceptile: ["sceptile", "sceptile-mega"],
   swampert: ["swampert", "swampert-mega"],
-  sableye: ["stableye", "sableye-mega"],
+  sableye: ["sableye", "sableye-mega"],
   sharpedo: ["sharpedo", "sharpedo-mega"],
   camerupt: ["camerupt", "camerupt-mega"],
   altaria: ["altaria", "altaria-mega"],
