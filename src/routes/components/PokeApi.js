@@ -54,7 +54,7 @@ export async function getPokemon(pokemonName) {
       });
     } catch (error) {
       console.error("Error fetching Pokémon data:", error);
-      throw new Error("No data available with the given name.");
+      throw new Error("No data available with the given input.");
     }
   }
 

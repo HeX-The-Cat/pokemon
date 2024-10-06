@@ -1,4 +1,5 @@
 <script>
+  import { version } from "$app/environment";
   export let message;
 </script>
 
@@ -6,37 +7,20 @@
   <br />
   <h3 class=" text-center">{message}</h3>
   <br />
-  <h3 class=" text-center">If you have trouble finding specific forms of the pokemons, try the following:</h3>
-  <br />
-  <h3 class=" text-center">Mega evolutions:</h3>
-  <p>Try e.g. "Metagross Mega" or "Charizard Mega X".</p>
-  <br />
-  <h3 class=" text-center">Special forms:</h3>
-  <p>Try e.g. "Shaymin Land", "Aegislash Shield" or "Giratina Altered".</p>
-  <br />
-  <h3 class=" text-center">Regional forms:</h3>
-  <p>Add the name of the region with space after the name:</p>
-  <dl>
-    <dt class=" text-xl">Alola:</dt>
-    <dl>For Alolan forms, e.g. "Raichu Alola"</dl>
-    <dt class=" text-xl">Galar:</dt>
-    <dl>For Galarian forms, e.g. "Rapidash Galar"</dl>
-    <dt class=" text-xl">Hisui:</dt>
-    <dl>For Hisuian forms, e.g. "Braviary Hisui"</dl>
-    <dt class=" text-xl">Paldea:</dt>
-    <dl>For Paldean forms, e.g. "Wooper Paldea"</dl>
-  </dl>
-  <br />
-  <h3>Complex searches:</h3>
-  <p>Examples of know complex pokemon searches:</p>
-  <ul>
-    <li>"Tauros Paldea Combat Breed"</li>
-    <li>"Darmanitan Galar Standard"</li>
-  </ul>
-  <br />
-  <h3>Some data may be missing from pokemons of newer generations.</h3>
+  <h3 class=" text-center">Pokemon data quicksearch:</h3>
   <p>
-    This is an issue with PokeAPI not having the data and there isn't anything this site can do about it as its only purpose is to display data fetched from the
-    API.
+    Small personal project for fast data search about Pokemons.<br />
+    Majority of the data is related to pokemon battles. <br />
+    All data is based on latest gen from
+    <a class=" underline text-blue-500 hover:text-blue-300 transition-all" href="https://pokeapi.co/" target="_blank">PokéAPI</a>.
   </p>
+  <br />
+  <h3>Usage:</h3>
+  <p>
+    All pokemons and most of their (meaningful) variants can be found based on the suggestions.<br />
+    This includes Regional variants and Mega Evolutions.
+  </p>
+  <br />
+  <br />
+  <p>Version {version}</p>
 </div>
