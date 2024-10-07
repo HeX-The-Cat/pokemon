@@ -22,17 +22,18 @@
     Steel: 1,
     Water: 1,
   };
-
   let weakToData = [];
   let resistantToData = [];
   let immuneToData = [];
   let normalDamageData = [];
 
   $: {
+    //reset values
     for (let key in resWeak) {
       resWeak[key] = 1;
     }
 
+    //damage multipliers based on typing
     for (let i = 0; i < pokeData[selectedForm].basic.types.length; i++) {
       if (pokeData[selectedForm].basic.types[i].type.name == "bug") {
         // resistances
@@ -237,6 +238,7 @@
     normalDamageData = normalDamage;
   }
 
+  //categorize types based on their value after miltipliers
   function categorizeTypes() {
     const weakTo = [];
     const resistantTo = [];
@@ -263,6 +265,7 @@
     };
   }
 
+  //bg colors for types
   function getBackgroundColor(type) {
     switch (type) {
       case "Bug":

@@ -1,4 +1,4 @@
-export const PokeNames = [
+export const SuggestionList = [
   "Bulbasaur",
   "Ivysaur",
   "Venusaur",

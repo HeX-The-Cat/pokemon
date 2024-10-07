@@ -6,7 +6,7 @@ const SearchFixer = fixer;
 export async function getPokemon(pokemonName) {
   let pokeData = [];
 
-  const poke = inputCheck(pokemonName); // Parse name for API
+  const poke = inputCheck(pokemonName);
 
   if (SearchFixer[poke]) {
     // Multiple forms fetch
@@ -17,7 +17,7 @@ export async function getPokemon(pokemonName) {
       const abilitiesDetails = await Promise.all(
         data.abilities.map(async (ability) => {
           const resAbi = await fetch(ability.ability.url);
-          return await resAbi.json(); // Return the entire ability data
+          return await resAbi.json();
         })
       );
 
@@ -30,8 +30,8 @@ export async function getPokemon(pokemonName) {
       const formsData = await Promise.all(formPromises);
       pokeData = formsData;
     } catch (error) {
-      console.error("Error fetching special forms:", error);
-      throw new Error("Error fetching special forms for " + poke);
+      console.error("Error fetching Pokémon data:", error);
+      throw new Error("Error fetching all forms for " + poke);
     }
   } else {
     // Regular fetch
@@ -39,18 +39,16 @@ export async function getPokemon(pokemonName) {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`);
       const data = await res.json();
 
-      // Fetch all ability details in parallel
       const abilitiesDetails = await Promise.all(
         data.abilities.map(async (ability) => {
           const resAbi = await fetch(ability.ability.url);
-          return await resAbi.json(); // Return the entire ability data
+          return await resAbi.json();
         })
       );
 
-      // Push the entire data into basic and abilities
       pokeData.push({
-        basic: data, // Store the entire basic data
-        abilities: abilitiesDetails, // Store the entire ability data
+        basic: data,
+        abilities: abilitiesDetails,
       });
     } catch (error) {
       console.error("Error fetching Pokémon data:", error);

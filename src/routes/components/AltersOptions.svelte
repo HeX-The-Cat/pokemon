@@ -1,8 +1,8 @@
 <script>
   import { MegaEvol } from "../../lib";
-  import { fixer } from "./NameFixer";
+  import { fixer } from "./utils/FormFixer";
 
-  const NameFixer = fixer;
+  const FormFixer = fixer;
 
   export let pokeData;
   export let selectedForm;
@@ -47,7 +47,7 @@
             <p>Mega</p>
           </button>
         </div>
-      {:else if NameFixer[form.basic.name]}
+      {:else if FormFixer[form.basic.name]}
         <div class=" my-2">
           <button
             class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
@@ -55,7 +55,7 @@
               selectedForm = index;
             }}
           >
-            {NameFixer[form.basic.name]}
+            {FormFixer[form.basic.name]}
           </button>
         </div>
       {:else if form.basic.name.includes("alola")}

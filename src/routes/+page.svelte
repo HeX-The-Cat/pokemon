@@ -4,13 +4,13 @@
   import { PBIcon } from "../lib/index.js";
   import Abilities from "./components/Abilities.svelte";
   import AltersOptions from "./components/AltersOptions.svelte";
-  import ApiFail from "./components/ApiFail.svelte";
+  import Landing from "./components/Landing.svelte";
   import Main from "./components/Main.svelte";
   import Stats from "./components/Stats.svelte";
   import Types from "./components/Types.svelte";
   import WeakRes from "./components/WeakRes.svelte";
-  import { PokeNames } from "./components/NameList.js";
-  import { getPokemon } from "./components/PokeApi.js";
+  import { SuggestionList } from "./components/utils/SuggestionList.js";
+  import { getPokemon } from "./components/utils/PokeApi.js";
 
   let loadingState = "menu";
   let pokeData = [];
@@ -31,10 +31,10 @@
     }
 
     // Prioritize names starting with the input (case-insensitive)
-    const startingMatches = PokeNames.filter((name) => name.toLowerCase().startsWith(pokemonName.toLowerCase()));
+    const startingMatches = SuggestionList.filter((name) => name.toLowerCase().startsWith(pokemonName.toLowerCase()));
 
     // Then get names containing the input, but not starting with it
-    const otherMatches = PokeNames.filter(
+    const otherMatches = SuggestionList.filter(
       (name) => name.toLowerCase().includes(pokemonName.toLowerCase()) && !name.toLowerCase().startsWith(pokemonName.toLowerCase())
     );
 
@@ -191,7 +191,7 @@
         </div>
       </div>
     {:else}
-      <ApiFail {message} />
+      <Landing {message} />
     {/if}
   </section>
 </div>

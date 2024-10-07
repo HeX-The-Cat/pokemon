@@ -4,19 +4,23 @@
   let uniqueAbilities = [];
 
   const getAbilityDescription = (ability) => {
+    //try find short entry
     const shortEntry = ability.effect_entries.find((entry) => entry.language.name === "en");
     if (shortEntry && shortEntry.short_effect) {
       return shortEntry.short_effect;
     }
 
+    //try find flavor entry
     const flavorEntry = ability.flavor_text_entries.find((entry) => entry.language.name === "en");
     if (flavorEntry) {
       return flavorEntry.flavor_text;
     }
 
+    //if no entry found
     return "No effect entry found for the ability";
   };
 
+  //filter dublicate abilities from the array because new gen API stuff dumb
   function filterUniqueAbilities(abilities) {
     const uniqueAbilities = [];
     const abilityNames = new Set();
@@ -31,6 +35,7 @@
     return uniqueAbilities;
   }
 
+  //refresh abilities list when changing forms
   $: uniqueAbilities = filterUniqueAbilities(pokeData[selectedForm].abilities);
 </script>
 

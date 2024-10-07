@@ -10,22 +10,22 @@
     pokeData[selectedForm].basic.stats[4].base_stat +
     pokeData[selectedForm].basic.stats[5].base_stat;
 
-  // Function to determine background color based on the total stat value
+  //update background color based on the total stat value
   $: bgColor = getBackgroundColor(totalStat);
 
   function getBackgroundColor(total) {
     if (total < 200) {
-      return "bg-gray-400"; // Gray
+      return "bg-gray-400";
     } else if (total < 300) {
-      return "bg-white"; // White
+      return "bg-white";
     } else if (total < 400) {
-      return "bg-green-400"; // Green
+      return "bg-green-400";
     } else if (total < 500) {
-      return "bg-blue-400"; // Blue
+      return "bg-blue-400";
     } else if (total < 600) {
-      return "bg-purple-400"; // Purple
+      return "bg-purple-400";
     } else if (total < 680) {
-      return "bg-orange-400"; // Orange
+      return "bg-orange-400";
     } else {
       return "bg-rainbow";
     }
@@ -72,12 +72,7 @@
       <div class="max-w-[500px] {bgColor}">
         <p>Base Stat Total</p>
         <p>
-          {pokeData[selectedForm].basic.stats[0].base_stat +
-            pokeData[selectedForm].basic.stats[1].base_stat +
-            pokeData[selectedForm].basic.stats[2].base_stat +
-            pokeData[selectedForm].basic.stats[3].base_stat +
-            pokeData[selectedForm].basic.stats[4].base_stat +
-            pokeData[selectedForm].basic.stats[5].base_stat}
+          {totalStat}
         </p>
       </div>
     </div>
