@@ -15,6 +15,7 @@ export const fixer = {
   "tapu-bulu": "TAPU BULU",
   "tapu-fini": "TAPU FINI",
   farfetchd: "FARFETCH'D",
+  "farfetchd-galar": "FARFETCH'D",
   sirfetchd: "SIRFETCH'D",
   "mr-rime": "Mr. RIME",
   "great-tusk": "GREAT TUSK",
