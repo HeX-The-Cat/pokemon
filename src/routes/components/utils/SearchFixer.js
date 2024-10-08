@@ -31,6 +31,7 @@ export const fixer = {
   slowking: ["slowking", "slowking-galar"],
   slowpoke: ["slowpoke", "slowpoke-galar"],
   stunfisk: ["stunfisk", "stunfisk-galar"],
+  weezing: ["weezing", "weezing-galar"],
   yamask: ["yamask", "yamask-galar"],
   zapdos: ["zapdos", "zapdos-galar"],
   zigzagoon: ["zigzagoon", "zigzagoon-galar"],
