@@ -239,7 +239,7 @@
   }
 
   //categorize types based on their value after miltipliers
-  function categorizeTypes() {
+  const categorizeTypes = () => {
     const weakTo = [];
     const resistantTo = [];
     const immuneTo = [];
@@ -263,10 +263,10 @@
       immuneTo,
       normalDamage,
     };
-  }
+  };
 
   //bg colors for types
-  function getBackgroundColor(type) {
+  const getBackgroundColor = (type) => {
     switch (type) {
       case "Bug":
         return "background-color: #A6B91A;";
@@ -305,7 +305,7 @@
       case "Water":
         return "background-color: #6390F0;";
     }
-  }
+  };
 
   //console.log(resWeak)
 </script>

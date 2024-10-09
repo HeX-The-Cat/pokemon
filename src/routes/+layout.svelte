@@ -1,12 +1,12 @@
 <script>
-    import "../app.css";
-    import LightDarkSwitch from './components/LightDarkSwitch.svelte';
+  import "../app.css";
+  import LightDarkSwitch from "./components/LightDarkSwitch.svelte";
 </script>
 
 <div class="flex justify-center pt-2">
-    <LightDarkSwitch />
+  <LightDarkSwitch />
 </div>
 
 <div class="flex justify-center">
-    <slot />
+  <slot />
 </div>

@@ -11,6 +11,7 @@
   import WeakRes from "./components/WeakRes.svelte";
   import { SuggestionList } from "./components/utils/SuggestionList.js";
   import { getPokemon } from "./components/utils/PokeApi.js";
+  import { lightMode } from "./components/LightDarkSwitch.svelte";
 
   let loadingState = "menu";
   let pokeData = [];
@@ -23,7 +24,7 @@
   let selectedForm = 0;
 
   // filtering function for suggestions
-  function filterSuggestions() {
+  const filterSuggestions = () => {
     if (pokemonName.trim() === "") {
       filteredSuggestions = [];
       showSuggestions = false;
@@ -39,14 +40,14 @@
     );
 
     // Combine both arrays and limit to 5 suggestions
-    filteredSuggestions = [...startingMatches, ...otherMatches].slice(0, 5);
+    filteredSuggestions = [...startingMatches, ...otherMatches].slice(0, 8);
 
     activeSuggestionIndex = -1; // Reset the active suggestion
     showSuggestions = filteredSuggestions.length > 0;
-  }
+  };
 
   // Handle up/down arrow key navigation
-  function handleKeyDown(event) {
+  const handleKeyDown = (event) => {
     if (showSuggestions) {
       if (event.key === "ArrowDown") {
         // Navigate down the suggestion list
@@ -62,38 +63,38 @@
         }
       }
     }
-  }
+  };
 
   // Handle suggestion selection
-  function selectSuggestion(suggestion) {
+  const selectSuggestion = (suggestion) => {
     //console.log(suggestion);
     showSuggestions = false;
     pokemonName = suggestion;
     filteredSuggestions = [];
     fetchPokemon();
-  }
+  };
 
   // Show suggestions on input focus
-  function handleFocus() {
+  const handleFocus = () => {
     showSuggestions = filteredSuggestions.length > 0;
-  }
+  };
 
   // Hide suggestions on input blur, but not when navigating with keys
-  function handleBlur() {
+  const handleBlur = () => {
     setTimeout(() => {
       showSuggestions = false; // Hide the suggestion box when clicking outside
     }, 100); // Timeout to allow click events to register
-  }
+  };
 
   // Only run this code in the browser environment
-  function handleClickOutside(event) {
+  const handleClickOutside = (event) => {
     if (browser && searchArea) {
       // Ensure searchArea is defined
       if (!searchArea.contains(event.target)) {
         showSuggestions = false;
       }
     }
-  }
+  };
 
   // Add event listener for clicks outside (only in browser)
   if (browser) {
@@ -107,7 +108,7 @@
   }
 
   // Fetch data from the API
-  async function fetchPokemon() {
+  const fetchPokemon = async () => {
     showSuggestions = false;
     selectedForm = 0;
     if (pokemonName != "") {
@@ -123,7 +124,7 @@
       message = "Search above for Pokémon by their name.";
       loadingState = "menu";
     }
-  }
+  };
 </script>
 
 <div class=" max-w-[500px] lg:max-w-[1000px]">
@@ -145,10 +146,10 @@
         <button on:click={() => fetchPokemon()} class=" w-[19%] border border-cyan-500 rounded-md"> Search </button>
       </form>
       {#if showSuggestions}
-        <ul class=" border border-gray-300 rounded-md mt-1 w-full max-w-[490px] absolute bg-[#1d232a] z-10">
+        <ul class=" border border-gray-300 rounded-md mt-1 w-full max-w-[490px] absolute {$lightMode ? 'bg-[#cccccc]' : 'bg-[#1d232a]'} z-10">
           {#each filteredSuggestions as suggestion, index}
             <li
-              class=" focus:text-black hover:bg-gray-200 hover:text-black px-3 py-[4px] cursor-pointer {index === activeSuggestionIndex
+              class=" dark:focus:text-black dark:hover:bg-gray-200 dark:hover:text-black px-3 py-[4px] cursor-pointer {index === activeSuggestionIndex
                 ? 'bg-gray-400 text-black'
                 : ''}"
               on:click={() => selectSuggestion(suggestion)}

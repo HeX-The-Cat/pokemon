@@ -21,7 +21,7 @@
   };
 
   //filter dublicate abilities from the array because new gen API stuff dumb
-  function filterUniqueAbilities(abilities) {
+  const filterUniqueAbilities = (abilities) => {
     const uniqueAbilities = [];
     const abilityNames = new Set();
 
@@ -33,7 +33,7 @@
     });
 
     return uniqueAbilities;
-  }
+  };
 
   //refresh abilities list when changing forms
   $: uniqueAbilities = filterUniqueAbilities(pokeData[selectedForm].abilities);

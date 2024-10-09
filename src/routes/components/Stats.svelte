@@ -13,7 +13,7 @@
   //update background color based on the total stat value
   $: bgColor = getBackgroundColor(totalStat);
 
-  function getBackgroundColor(total) {
+  const getBackgroundColor = (total) => {
     if (total < 200) {
       return "bg-gray-400";
     } else if (total < 300) {
@@ -29,7 +29,7 @@
     } else {
       return "bg-rainbow";
     }
-  }
+  };
   //console.log(pokeData)
 </script>
 
