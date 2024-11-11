@@ -11,8 +11,8 @@
 {#if pokeData.length > 1}
   <div class=" flex flex-wrap justify-evenly py-6 min-h-[103px]">
     {#each pokeData as form, index}
-      {#if form.basic.name.includes("mega-x")}
-        <div class=" my-2">
+      <div class=" m-2">
+        {#if form.basic.name.includes("mega")}
           <button
             class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
             on:click={() => {
@@ -20,35 +20,15 @@
             }}
           >
             <img src={MegaEvol} alt="megaevol" class=" max-h-5 fill-[rainbow-fill] pr-1" />
-            <p>Mega X</p>
+            {#if form.basic.name.includes("mega-x")}
+              <p>Mega X</p>
+            {:else if form.basic.name.includes("mega-y")}
+              <p>Mega Y</p>
+            {:else}
+              <p>Mega</p>
+            {/if}
           </button>
-        </div>
-      {:else if form.basic.name.includes("mega-y")}
-        <div class=" my-2">
-          <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
-            on:click={() => {
-              selectedForm = index;
-            }}
-          >
-            <img src={MegaEvol} alt="megaevol" class=" max-h-5 fill-[rainbow-fill] pr-1" />
-            <p>Mega Y</p>
-          </button>
-        </div>
-      {:else if form.basic.name.includes("mega")}
-        <div class=" my-2">
-          <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
-            on:click={() => {
-              selectedForm = index;
-            }}
-          >
-            <img src={MegaEvol} alt="megaevol" class=" max-h-5 fill-[rainbow-fill] pr-1" />
-            <p>Mega</p>
-          </button>
-        </div>
-      {:else if FormFixer[form.basic.name]}
-        <div class=" my-2">
+        {:else if FormFixer[form.basic.name]}
           <button
             class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
             on:click={() => {
@@ -57,53 +37,24 @@
           >
             {FormFixer[form.basic.name]}
           </button>
-        </div>
-      {:else if form.basic.name.includes("alola")}
-        <div class=" my-2">
+        {:else if form.basic.name.includes("alola") || form.basic.name.includes("galar") || form.basic.name.includes("hisui") || form.basic.name.includes("paldea")}
           <button
             class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
             on:click={() => {
               selectedForm = index;
             }}
           >
-            Alolan Form
+            {#if form.basic.name.includes("alola")}
+              Alolan Form
+            {:else if form.basic.name.includes("galar")}
+              Galarian Form
+            {:else if form.basic.name.includes("hisui")}
+              Hisuian Form
+            {:else}
+              Paldean Form
+            {/if}
           </button>
-        </div>
-      {:else if form.basic.name.includes("galar")}
-        <div class=" my-2">
-          <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
-            on:click={() => {
-              selectedForm = index;
-            }}
-          >
-            Galarian Form
-          </button>
-        </div>
-      {:else if form.basic.name.includes("hisui")}
-        <div class=" my-2">
-          <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
-            on:click={() => {
-              selectedForm = index;
-            }}
-          >
-            Hisuian Form
-          </button>
-        </div>
-      {:else if form.basic.name.includes("paldea")}
-        <div class=" my-2">
-          <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
-            on:click={() => {
-              selectedForm = index;
-            }}
-          >
-            Paldean Form
-          </button>
-        </div>
-      {:else}
-        <div class=" my-2">
+        {:else}
           <button
             class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
             on:click={() => {
@@ -112,8 +63,8 @@
           >
             {form.basic.name[0].toUpperCase() + form.basic.name.substring(1).replace(/-/g, " ")}
           </button>
-        </div>
-      {/if}
+        {/if}
+      </div>
     {/each}
   </div>
 {/if}

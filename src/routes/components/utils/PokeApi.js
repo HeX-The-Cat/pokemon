@@ -3,7 +3,7 @@ import { fixer } from "./SearchFixer";
 
 const SearchFixer = fixer;
 
-export async function getPokemon(pokemonName) {
+export const getPokemon = async (pokemonName) => {
   let pokeData = [];
 
   const poke = inputCheck(pokemonName);
@@ -58,4 +58,4 @@ export async function getPokemon(pokemonName) {
 
   //console.log(pokeData);
   return pokeData;
-}
+};

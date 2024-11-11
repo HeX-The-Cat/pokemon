@@ -1,9 +1,9 @@
 export const fixer = {
   generics: "",
   farfetchd: "Farfetch'd",
-  "farfetchd-galar": "Farfetch'd Galar",
+  "farfetchd-galar": "Galarian Form",
   "mr-mime": "Mr. Mime",
-  "mr-mime-galar": "Mr. Mime Galar",
+  "mr-mime-galar": "Galarian Form",
   "tauros-paldea-combat-breed": "Combat Breed",
   "tauros-paldea-blaze-breed": "Blaze Breed",
   "tauros-paldea-aqua-breed": "Aqua Breed",
@@ -116,6 +116,6 @@ export const fixer = {
   "zygarde-complete": "Complete Forme",
   "darmanitan-standard": "Standard Mode",
   "darmanitan-zen": "Zen Mode",
-  "darmanitan-galar-standard": "Galar Standard Mode",
-  "darmanitan-galar-zen": "Galar Zen Mode",
+  "darmanitan-galar-standard": "Galarrian Standard Mode",
+  "darmanitan-galar-zen": "Galarrian Zen Mode",
 };
