@@ -32,6 +32,8 @@
       }
     });
 
+    //console.log(uniqueAbilities)
+
     return uniqueAbilities;
   };
 
@@ -42,20 +44,26 @@
 <div class=" mt-2 lg:mt-0">
   <h3 class=" pl-4">Abilities:</h3>
 
-  {#each uniqueAbilities as ability, index}
-    <div tabindex="-1" class="collapse collapse-arrow">
-      <input type="checkbox" />
+  {#if uniqueAbilities.length > 0}
+    {#each uniqueAbilities as ability, index}
+      <div tabindex="-1" class="collapse collapse-arrow">
+        <input type="checkbox" />
 
-      <div class="collapse-title text-xl font-medium">
-        <p>{ability.name.replace(/-/g, " ").toUpperCase()}</p>
-        {#if pokeData[selectedForm].basic.abilities[index].is_hidden}
-          <p class="badge badge-outline py-[10px]">Hidden Ability</p>
-        {/if}
-      </div>
+        <div class="collapse-title text-xl font-medium">
+          <p>{ability.name.replace(/-/g, " ").toUpperCase()}</p>
+          {#if pokeData[selectedForm].basic.abilities[index].is_hidden}
+            <p class="badge badge-outline py-[10px]">Hidden Ability</p>
+          {/if}
+        </div>
 
-      <div class="collapse-content">
-        <p>{getAbilityDescription(ability)}</p>
+        <div class="collapse-content">
+          <p>{getAbilityDescription(ability)}</p>
+        </div>
       </div>
+    {/each}
+  {:else}
+    <div>
+      <p class="text-center text-xl">No Ability entries found</p>
     </div>
-  {/each}
+  {/if}
 </div>

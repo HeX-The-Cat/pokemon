@@ -13,6 +13,7 @@ export const getPokemon = async (pokemonName) => {
     const formPromises = SearchFixer[poke].map(async (form) => {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${form}`);
       const data = await res.json();
+      //console.log(data);
 
       const abilitiesDetails = await Promise.all(
         data.abilities.map(async (ability) => {
