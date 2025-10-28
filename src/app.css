@@ -56,11 +56,11 @@ h3 {
 }
 
 .formsButton {
-  @apply border rounded-lg py-1 px-3 w-auto min-w-[200px] transition-all duration-150 flex justify-center items-center bg-[#1d232a];
+  @apply border rounded-lg py-1 px-3 w-auto min-w-[200px] transition-all duration-150 flex justify-center items-center;
 }
 .formsButtonSelected {
   @apply border-green-500 border-b-2 pb-[6px] mt-[2px];
 }
 .formsButtonDeselected {
-  @apply border-white border-b-4 mb-[2px];
+  @apply border-green-800 border-b-4 mb-[2px];
 }

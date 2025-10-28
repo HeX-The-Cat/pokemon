@@ -1,6 +1,7 @@
 <script>
   import { MegaEvol } from "../../lib";
   import { fixer } from "./utils/FormFixer";
+  import { lightMode } from "./LightDarkSwitch.svelte";
 
   const FormFixer = fixer;
 
@@ -9,12 +10,12 @@
 </script>
 
 {#if pokeData.length > 1}
-  <div class=" flex flex-wrap justify-evenly py-6 min-h-[103px]">
+  <div class=" flex flex-wrap justify-evenly py-6 min-h-[103px] ">
     {#each pokeData as form, index}
       <div class=" m-2">
         {#if form.basic.name.includes("mega")}
           <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
+            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}{$lightMode ? 'bg-[#ffffff]' : 'bg-[#1d232a]'}"
             on:click={() => {
               selectedForm = index;
             }}
@@ -30,7 +31,7 @@
           </button>
         {:else if FormFixer[form.basic.name]}
           <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
+            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}{$lightMode ? 'bg-[#ffffff]' : 'bg-[#1d232a]'}"
             on:click={() => {
               selectedForm = index;
             }}
@@ -39,7 +40,7 @@
           </button>
         {:else if form.basic.name.includes("alola") || form.basic.name.includes("galar") || form.basic.name.includes("hisui") || form.basic.name.includes("paldea")}
           <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
+            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}{$lightMode ? 'bg-[#ffffff]' : 'bg-[#1d232a]'}"
             on:click={() => {
               selectedForm = index;
             }}
@@ -56,7 +57,7 @@
           </button>
         {:else}
           <button
-            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}"
+            class=" formsButton {selectedForm == index ? ' formsButtonSelected ' : ' formsButtonDeselected '}{$lightMode ? 'bg-[#ffffff]' : 'bg-[#1d232a]'}"
             on:click={() => {
               selectedForm = index;
             }}
