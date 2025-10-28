@@ -38,6 +38,7 @@ export const getPokemon = async (pokemonName) => {
     try {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`);
       const data = await res.json();
+      //console.log(data);
 
       const abilitiesDetails = await Promise.all(
         data.abilities.map(async (ability) => {
