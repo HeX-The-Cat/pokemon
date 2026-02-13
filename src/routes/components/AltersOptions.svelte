@@ -25,6 +25,8 @@
               <p>Mega X</p>
             {:else if form.basic.name.includes("mega-y")}
               <p>Mega Y</p>
+            {:else if form.basic.name.includes("mega-z")}
+              <p>Mega Z</p>
             {:else}
               <p>Mega</p>
             {/if}

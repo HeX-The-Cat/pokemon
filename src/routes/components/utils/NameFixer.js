@@ -42,4 +42,5 @@ export const fixer = {
   "raging-bolt": "RAGING BOLT",
   "iron-boulder": "IRON BOULDER",
   "iron-crown": "IRON CROWN",
+  "tatsugiri-stretchy-mega": "TATSUGIRI MEGA",
 };
